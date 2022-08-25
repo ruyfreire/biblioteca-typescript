@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ReactNode, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 import { Tabs, Tab } from 'ui-app'
 
+import { Section } from 'components'
 import routes from 'utils/routes'
 
 import * as S from './styles'
@@ -26,19 +27,38 @@ const Layout = ({ children, title, header, ...props }: LayoutProps) => {
     setPathActive(pathList[tabIndex])
   }
 
-  const titleName = title ? `Biblioteca - ${title}` : 'Biblioteca'
+  const titleBase = 'Biblioteca Digital'
+  let titleName = titleBase
+  if (title) {
+    titleName = `${titleBase} - ${title}`
+  }
+
+  const sectionChildren: ReactNode[] = []
+  const bodyChildren: ReactNode[] = []
+
+  React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      if (child.type === Section) {
+        sectionChildren.push(child)
+      } else {
+        bodyChildren.push(child)
+      }
+    }
+  })
 
   return (
-    <S.Container {...props}>
+    <S.Container {...props} hasSection={sectionChildren.length > 0}>
       <Head>
         <title>{titleName}</title>
         <meta name="description" content="Biblioteca Ruy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>{<h1>{header || 'Biblioteca'}</h1>}</header>
+      <header>{<h1>{header || titleBase}</h1>}</header>
 
-      <main>{children}</main>
+      {sectionChildren}
+
+      <main>{bodyChildren}</main>
 
       <nav>
         <Tabs

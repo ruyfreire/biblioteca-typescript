@@ -1,14 +1,28 @@
 import styled, { css } from 'styled-components'
 
-export const Container = styled.div`
-  ${({ theme }) => css`
+type ContainerProps = {
+  hasSection?: boolean
+}
+
+export const Container = styled.div<ContainerProps>`
+  ${({ theme, hasSection }) => css`
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     grid-template-columns: 1fr;
-    grid-template-areas:
-      'head'
-      'main'
-      'footer';
+    ${hasSection
+      ? css`
+          grid-template-areas:
+            'head'
+            'section'
+            'main'
+            'footer';
+        `
+      : css`
+          grid-template-areas:
+            'head'
+            'main'
+            'footer';
+        `}
     min-height: 100vh;
     background-color: ${theme.colors.background.section};
 
@@ -16,11 +30,17 @@ export const Container = styled.div`
       grid-area: head;
       background-color: ${theme.colors.background.primary};
       padding: 8px 16px;
+      height: 64px;
+      display: flex;
+      align-items: center;
     }
 
     main {
       grid-area: main;
-      padding: 8px;
+      padding: 16px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     nav {
