@@ -5,11 +5,11 @@ const routes = {
   },
   autor: {
     name: 'Autores',
-    path: '/autor',
+    path: '/autores',
   },
   livro: {
     name: 'Livros',
-    path: '/livro',
+    path: '/livros',
   },
 }
 
