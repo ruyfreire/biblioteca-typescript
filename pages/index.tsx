@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
-import Image from 'next/future/image'
+import Image from 'next/image'
 
-import { Card, Grid } from 'ui-app'
+import { Box, Card, Grid } from 'ui-app'
 
 import { Section } from 'components'
 import Layout from 'templates/Layout'
@@ -9,14 +9,16 @@ import routes from 'utils/routes'
 
 const Home: NextPage = () => {
   return (
-    <Layout title={routes.home.name}>
+    <Layout title={routes.home.name} header={routes.home.name}>
       <Section>
-        <Image
-          src="https://placeimg.com/1000/150/tech/grayscale"
-          alt="Imagem randômica"
-          sizes="100vw"
-          fill
-        />
+        <Box display="flex" justifyContent="center" bgColor="#fff">
+          <Image
+            src="/home.jpg"
+            alt="Ilustração de uma biblioteca"
+            height={200}
+            width={400}
+          />
+        </Box>
       </Section>
 
       <Grid container flexDirection="column" alignItems="center" gap={16}>
