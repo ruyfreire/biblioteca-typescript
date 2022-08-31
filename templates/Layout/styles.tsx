@@ -6,11 +6,16 @@ type ContainerProps = {
 
 export const Container = styled.div<ContainerProps>`
   ${({ theme, hasSection }) => css`
+    --footer-height: 72px;
+    --head-height: 64px;
     display: grid;
     grid-template-columns: 1fr;
+    min-height: 100vh;
+    background-color: ${theme.colors.background.section};
+
     ${hasSection
       ? css`
-          grid-template-rows: min-content min-content 1fr min-content;
+          grid-template-rows: 64px min-content 1fr var(--footer-height);
           grid-template-areas:
             'head'
             'section'
@@ -18,20 +23,23 @@ export const Container = styled.div<ContainerProps>`
             'footer';
         `
       : css`
-          grid-template-rows: min-content 1fr min-content;
+          grid-template-rows: 64px 1fr;
           grid-template-areas:
             'head'
             'main'
             'footer';
         `}
-    min-height: 100vh;
-    background-color: ${theme.colors.background.section};
 
     header {
       grid-area: head;
+      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       background-color: ${theme.colors.background.primary};
       padding: 8px 16px;
-      height: 64px;
+      height: var(--head-height);
       display: flex;
       align-items: center;
     }
@@ -46,6 +54,12 @@ export const Container = styled.div<ContainerProps>`
 
     nav {
       grid-area: footer;
+      z-index: 10;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--footer-height);
       background-color: ${theme.colors.background.primary};
       padding: 8px 16px;
     }
