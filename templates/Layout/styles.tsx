@@ -7,10 +7,10 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   ${({ theme, hasSection }) => css`
     display: grid;
-    grid-template-rows: min-content 1fr min-content;
     grid-template-columns: 1fr;
     ${hasSection
       ? css`
+          grid-template-rows: min-content min-content 1fr min-content;
           grid-template-areas:
             'head'
             'section'
@@ -18,6 +18,7 @@ export const Container = styled.div<ContainerProps>`
             'footer';
         `
       : css`
+          grid-template-rows: min-content 1fr min-content;
           grid-template-areas:
             'head'
             'main'
@@ -65,4 +66,14 @@ export const TabLink = styled.a`
   :visited {
     text-decoration: none;
   }
+`
+
+export const LogoHeader = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 0;
+  gap: 8px;
 `

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { ReactNode, useState } from 'react'
@@ -54,7 +55,15 @@ const Layout = ({ children, title, header, ...props }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>{<h1>{header || titleBase}</h1>}</header>
+      <header>
+        {
+          <S.LogoHeader>
+            <Image src="/icon.svg" alt="Logo" width={32} height={32} />
+
+            <h1>{header || titleBase}</h1>
+          </S.LogoHeader>
+        }
+      </header>
 
       {sectionChildren}
 
