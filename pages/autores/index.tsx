@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import { Box, Button, Grid } from 'ui-app'
@@ -8,6 +9,8 @@ import Layout from 'templates/Layout'
 import routes from 'utils/routes'
 
 const Autor = () => {
+  const router = useRouter()
+
   return (
     <Layout title={routes.autores.name} header={routes.autores.name}>
       <Section>
@@ -23,7 +26,11 @@ const Autor = () => {
 
       <Grid container flexDirection="column">
         <Grid item>
-          <Button variant="ghost" fullWidth>
+          <Button
+            variant="ghost"
+            onClick={() => router.push(routes.autoresBuscar.path)}
+            fullWidth
+          >
             Buscar por nome ou livros
           </Button>
         </Grid>
