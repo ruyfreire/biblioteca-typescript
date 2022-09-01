@@ -1,32 +1,34 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode } from 'react'
+import { FiArrowLeftCircle } from 'react-icons/fi'
 
-import { Tabs, Tab } from 'ui-app'
+import { Tabs, Tab, IconButton } from 'ui-app'
 
 import { Section } from 'components'
 import routes from 'utils/routes'
 
 import * as S from './styles'
 
-const tabs = Object.values(routes)
+const tabs = Object.values(routes).filter((route) => route.showMenu)
 
 type LayoutProps = {
   children: ReactNode
   title?: string
   header?: ReactNode
+  backButton?: () => void
 }
 
-const Layout = ({ children, title, header, ...props }: LayoutProps) => {
+const Layout = ({
+  children,
+  title,
+  header,
+  backButton,
+  ...props
+}: LayoutProps) => {
   const router = useRouter()
-  const [pathActive, setPathActive] = useState(router.pathname)
   const pathList = tabs.map((tab) => tab.path)
-
-  const handleTab = (tabIndex: number) => {
-    setPathActive(pathList[tabIndex])
-  }
 
   const titleBase = 'Biblioteca Digital'
   let titleName = titleBase
@@ -58,6 +60,12 @@ const Layout = ({ children, title, header, ...props }: LayoutProps) => {
       <header>
         {
           <S.LogoHeader>
+            {backButton && (
+              <IconButton onClick={backButton}>
+                <FiArrowLeftCircle />
+              </IconButton>
+            )}
+
             <Image src="/icon.svg" alt="Logo" width={32} height={32} />
 
             <h1>{header || titleBase}</h1>
@@ -71,14 +79,19 @@ const Layout = ({ children, title, header, ...props }: LayoutProps) => {
 
       <nav>
         <Tabs
-          active={pathList.findIndex((path) => path === pathActive)}
-          onChange={handleTab}
+          active={pathList.findIndex((path) => {
+            const basePath = path.split('/')[1]
+            const baseActive = router.pathname.split('/')[1]
+
+            if (!baseActive) return true
+
+            return basePath === baseActive
+          })}
+          onChange={(index) => router.push(pathList[index])}
         >
           {tabs.map((tab) => (
             <Tab key={tab.path}>
-              <Link href={tab.path} passHref>
-                <S.TabLink>{tab.name}</S.TabLink>
-              </Link>
+              <S.TabLink>{tab.name}</S.TabLink>
             </Tab>
           ))}
         </Tabs>
