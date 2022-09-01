@@ -9,7 +9,7 @@ import routes from 'utils/routes'
 
 const Livro = () => {
   return (
-    <Layout title={routes.livro.name} header={routes.livro.name}>
+    <Layout title={routes.livros.name} header={routes.livros.name}>
       <Section>
         <Box display="flex" justifyContent="center" bgColor="#fff">
           <Image

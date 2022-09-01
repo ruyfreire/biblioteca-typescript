@@ -3,13 +3,13 @@ const routes = {
     name: 'Início',
     path: '/',
   },
-  autor: {
-    name: 'Autores',
-    path: '/autores',
-  },
-  livro: {
+  livros: {
     name: 'Livros',
     path: '/livros',
+  },
+  autores: {
+    name: 'Autores',
+    path: '/autores',
   },
 }
 
