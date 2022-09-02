@@ -6,8 +6,8 @@ type SectionProps = {
   children: ReactNode
 }
 
-const Section = ({ children }: SectionProps) => {
-  return <S.Wrapper>{children}</S.Wrapper>
+const Section = ({ children, ...props }: SectionProps) => {
+  return <S.Wrapper {...props}>{children}</S.Wrapper>
 }
 
 export default Section
