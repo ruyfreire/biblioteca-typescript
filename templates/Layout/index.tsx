@@ -30,6 +30,14 @@ const Layout = ({
   const router = useRouter()
   const pathList = tabs.map((tab) => tab.path)
 
+  const activeTab = (() =>
+    pathList.findIndex((path) => {
+      const basePath = path.split('/')[1]
+      const baseActive = router.pathname.split('/')[1]
+
+      return !baseActive || basePath === baseActive
+    }))()
+
   const titleBase = 'Biblioteca Digital'
   let titleName = titleBase
   if (title) {
@@ -79,14 +87,7 @@ const Layout = ({
 
       <nav>
         <Tabs
-          active={pathList.findIndex((path) => {
-            const basePath = path.split('/')[1]
-            const baseActive = router.pathname.split('/')[1]
-
-            if (!baseActive) return true
-
-            return basePath === baseActive
-          })}
+          active={activeTab}
           onChange={(index) => router.push(pathList[index])}
         >
           {tabs.map((tab) => (
