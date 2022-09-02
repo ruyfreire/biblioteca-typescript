@@ -24,7 +24,7 @@ const Livro = () => {
       <Grid container flexDirection="column">
         <Grid item>
           <Button variant="ghost" fullWidth>
-            Buscar por nome ou autor
+            Cadastrar
           </Button>
         </Grid>
 
@@ -35,14 +35,16 @@ const Livro = () => {
         </Grid>
 
         <Grid item>
-          <Button variant="ghost" fullWidth>
-            Cadastrar
-          </Button>
+          <Tooltip text="Em breve">
+            <Button variant="secondary" disabled fullWidth>
+              Buscar por nome ou autor
+            </Button>
+          </Tooltip>
         </Grid>
 
         <Grid item>
           <Tooltip text="Em breve">
-            <Button variant="ghost" fullWidth disabled>
+            <Button variant="secondary" disabled fullWidth>
               Emprestar
             </Button>
           </Tooltip>
