@@ -14,6 +14,11 @@ const routes = {
     path: '/autores',
     showMenu: true,
   },
+  autoresCadastrar: {
+    name: 'Cadastrar autores',
+    path: '/autores/cadastrar',
+    showMenu: false,
+  },
   autoresBuscar: {
     name: 'Buscar autores',
     path: '/autores/buscar',
