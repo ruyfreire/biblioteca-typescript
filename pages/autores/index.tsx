@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { Box, Button, Grid } from 'ui-app'
+import { Box, Button, Grid, Tooltip } from 'ui-app'
 
 import { Section } from 'components'
 import Layout from 'templates/Layout'
@@ -28,10 +28,10 @@ const Autor = () => {
         <Grid item>
           <Button
             variant="ghost"
-            onClick={() => router.push(routes.autoresBuscar.path)}
+            onClick={() => router.push(routes.autoresCadastrar.path)}
             fullWidth
           >
-            Buscar por nome ou livros
+            Cadastrar
           </Button>
         </Grid>
 
@@ -42,9 +42,16 @@ const Autor = () => {
         </Grid>
 
         <Grid item>
-          <Button variant="ghost" fullWidth>
-            Cadastrar
-          </Button>
+          <Tooltip text="Em breve">
+            <Button
+              variant="secondary"
+              onClick={() => router.push(routes.autoresBuscar.path)}
+              disabled
+              fullWidth
+            >
+              Buscar por nome
+            </Button>
+          </Tooltip>
         </Grid>
       </Grid>
     </Layout>
