@@ -4,19 +4,21 @@ import { FiSearch } from 'react-icons/fi'
 
 import { Grid, Input } from 'ui-app'
 
-import Layout from 'templates/Layout'
+import { Header } from 'components'
 import routes from 'utils/routes'
 
-const Buscar = () => {
+const BuscarAutores = () => {
   const router = useRouter()
   const [search, setSearch] = useState('')
 
   return (
-    <Layout
-      title={routes.autoresBuscar.name}
-      header={routes.autoresBuscar.name}
-      backButton={() => router.push(routes.autores.path)}
-    >
+    <>
+      <Header
+        title={routes.autoresBuscar.name}
+        header={routes.autoresBuscar.name}
+        backButton={() => router.push(routes.autores.path)}
+      />
+
       <Grid container flexDirection="column" gap={16}>
         <Grid item>
           <Input
@@ -28,8 +30,8 @@ const Buscar = () => {
           />
         </Grid>
       </Grid>
-    </Layout>
+    </>
   )
 }
 
-export default Buscar
+export default BuscarAutores

@@ -3,8 +3,7 @@ import React, { useState } from 'react'
 
 import { Button, Grid, Input } from 'ui-app'
 
-import { BoxBottom } from 'components'
-import Layout from 'templates/Layout'
+import { BoxBottom, Header } from 'components'
 import routes from 'utils/routes'
 
 const Cadastrar = () => {
@@ -12,11 +11,13 @@ const Cadastrar = () => {
   const [authorName, setAuthorName] = useState('')
 
   return (
-    <Layout
-      title={routes.autoresCadastrar.name}
-      header={routes.autoresCadastrar.name}
-      backButton={() => router.push(routes.autores.path)}
-    >
+    <>
+      <Header
+        title={routes.autoresCadastrar.name}
+        header={routes.autoresCadastrar.name}
+        backButton={() => router.push(routes.autores.path)}
+      />
+
       <Grid container flexDirection="column" gap={16}>
         <Grid item>
           <Input
@@ -30,11 +31,16 @@ const Cadastrar = () => {
       </Grid>
 
       <BoxBottom>
-        <Button variant="secondary">Cancelar</Button>
+        <Button
+          variant="secondary"
+          onClick={() => router.push(routes.autores.path)}
+        >
+          Cancelar
+        </Button>
 
         <Button>Cadastrar</Button>
       </BoxBottom>
-    </Layout>
+    </>
   )
 }
 

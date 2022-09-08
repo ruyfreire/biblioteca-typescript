@@ -4,25 +4,24 @@ import React from 'react'
 
 import { Box, Button, Grid, Tooltip } from 'ui-app'
 
-import { Section } from 'components'
-import Layout from 'templates/Layout'
+import { Header } from 'components'
 import routes from 'utils/routes'
 
 const Autor = () => {
   const router = useRouter()
 
   return (
-    <Layout title={routes.autores.name} header={routes.autores.name}>
-      <Section>
-        <Box display="flex" justifyContent="center" bgColor="#fff">
-          <Image
-            src="/author.jpg"
-            alt="Ilustração de pessoa com livro"
-            height={200}
-            width={250}
-          />
-        </Box>
-      </Section>
+    <>
+      <Header title={routes.autores.name} header={routes.autores.name} />
+
+      <Box display="flex" justifyContent="center" bgColor="#fff" mb={3}>
+        <Image
+          src="/author.jpg"
+          alt="Ilustração de pessoa com livro"
+          height={200}
+          width={250}
+        />
+      </Box>
 
       <Grid container flexDirection="column">
         <Grid item>
@@ -36,7 +35,11 @@ const Autor = () => {
         </Grid>
 
         <Grid item>
-          <Button variant="ghost" fullWidth>
+          <Button
+            variant="ghost"
+            onClick={() => router.push(routes.autoresBuscar.path)}
+            fullWidth
+          >
             Buscar todos
           </Button>
         </Grid>
@@ -54,7 +57,7 @@ const Autor = () => {
           </Tooltip>
         </Grid>
       </Grid>
-    </Layout>
+    </>
   )
 }
 
