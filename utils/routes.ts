@@ -9,6 +9,16 @@ const routes = {
     path: '/livros',
     showMenu: true,
   },
+  livrosCadastrar: {
+    name: 'Cadastrar Livros',
+    path: '/livros/cadastrar',
+    showMenu: false,
+  },
+  livrosBuscar: {
+    name: 'Buscar Livros',
+    path: '/livros/buscar',
+    showMenu: false,
+  },
   autores: {
     name: 'Autores',
     path: '/autores',
