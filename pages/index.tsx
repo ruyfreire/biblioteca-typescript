@@ -3,23 +3,22 @@ import Image from 'next/image'
 
 import { Box, Card, Grid } from 'ui-app'
 
-import { Section } from 'components'
-import Layout from 'templates/Layout'
+import { Header } from 'components'
 import routes from 'utils/routes'
 
 const Home: NextPage = () => {
   return (
-    <Layout title={routes.home.name} header={routes.home.name}>
-      <Section>
-        <Box display="flex" justifyContent="center" bgColor="#fff">
-          <Image
-            src="/home.jpg"
-            alt="Ilustração de uma biblioteca"
-            height={200}
-            width={400}
-          />
-        </Box>
-      </Section>
+    <>
+      <Header title={routes.home.name} header={routes.home.name} />
+
+      <Box display="flex" justifyContent="center" bgColor="#fff" mb={3}>
+        <Image
+          src="/home.jpg"
+          alt="Ilustração de uma biblioteca"
+          height={200}
+          width={400}
+        />
+      </Box>
 
       <Grid container flexDirection="column" alignItems="center" gap={16}>
         <Grid item>
@@ -35,7 +34,7 @@ const Home: NextPage = () => {
           </Card>
         </Grid>
       </Grid>
-    </Layout>
+    </>
   )
 }
 
