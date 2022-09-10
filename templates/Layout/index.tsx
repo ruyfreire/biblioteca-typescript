@@ -9,7 +9,7 @@ export type LayoutProps = {
 const Layout = ({ children, ...props }: LayoutProps) => {
   return (
     <S.Container {...props}>
-      <main>{children}</main>
+      <div className="main">{children}</div>
     </S.Container>
   )
 }

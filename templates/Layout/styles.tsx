@@ -28,7 +28,7 @@ export const Container = styled.div`
       z-index: 10;
     }
 
-    main {
+    .main {
       display: flex;
       flex-direction: column;
       grid-area: main;
