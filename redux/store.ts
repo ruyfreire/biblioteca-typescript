@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
+import middlewares from './middlewares'
 import author from './reducers/author'
 import book from './reducers/book'
 import generics from './reducers/generics'
@@ -13,10 +14,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActionPaths: ['payload'],
-        ignoredPaths: ['generics.apiErrors']
+        ignoredActionPaths: ['payload', 'error']
       }
-    })
+    }).prepend(middlewares)
 })
 
 export type RootState = ReturnType<typeof store.getState>

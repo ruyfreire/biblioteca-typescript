@@ -1,19 +1,17 @@
 import { createReducer, createAction } from '@reduxjs/toolkit'
 import { Book, BookState } from 'types'
 
-const createBook = createAction<Book>('book/CREATE')
-const saveBook = createAction<Book[]>('book/SAVE')
+export const bookActions = {
+  createBook: createAction<Book>('book/CREATE'),
+  saveBook: createAction<Book[]>('book/SAVE')
+}
 
 const initialState: BookState = {
   books: []
 }
 
-export const bookReducer = createReducer(initialState, (builder) => {
-  builder.addCase(saveBook, (state, action) => {
+export default createReducer(initialState, (builder) => {
+  builder.addCase(bookActions.saveBook, (state, action) => {
     state.books = action.payload
   })
 })
-
-export const appActions = { createBook, saveBook }
-
-export default bookReducer
