@@ -1,17 +1,18 @@
-import { ReactNode } from "react";
-import { Aside } from "../Aside";
-import { Main } from "../Main";
+import React from 'react'
+
+import { Main } from '../Main'
+import { Nav } from '../Nav'
 
 type LayoutProps = {
-  children: ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function Layout(props: LayoutProps) {
   return (
-    <div className="grid h-screen grid-cols-12 grid-rows-1">
-      <Aside />
+    <div className="grid h-screen grid-cols-1 grid-rows-[64px_1fr]">
+      <Nav />
 
       <Main>{props.children}</Main>
     </div>
-  );
+  )
 }

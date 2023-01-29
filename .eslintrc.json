@@ -1,6 +1,21 @@
 {
   "extends": ["next", "prettier"],
+  "plugins": ["eslint-plugin-import-helpers"],
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "/^next/",
+          "module",
+          "/^@/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
   }
 }
