@@ -5,5 +5,5 @@ type MainProps = {
 }
 
 export function Main(props: MainProps) {
-  return <main className="bg-slate-300 p-2">{props.children}</main>
+  return <main className="flex bg-slate-300 p-6">{props.children}</main>
 }

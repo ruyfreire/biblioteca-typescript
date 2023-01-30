@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { Header } from '../Header'
 import { Main } from '../Main'
-import { Nav } from '../Nav'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -10,7 +10,7 @@ type LayoutProps = {
 export function Layout(props: LayoutProps) {
   return (
     <div className="grid h-screen grid-cols-1 grid-rows-[64px_1fr]">
-      <Nav />
+      <Header />
 
       <Main>{props.children}</Main>
     </div>
